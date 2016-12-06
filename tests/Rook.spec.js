@@ -125,6 +125,11 @@ describe('Rook >', () => {
       expect(myRook.movedStatus()).toEqual(false)
       myRook.move()
       expect(myRook.movedStatus()).toEqual(true)
+
+      // Check that it is instance specific
+      let otherRook = Rook()
+      expect(otherRook.movedStatus()).toEqual(false)
+      expect(myRook.movedStatus()).toEqual(true)
     })
   })
 })

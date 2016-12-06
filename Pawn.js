@@ -20,9 +20,13 @@ const State = stampit({
     canMove({board, pos1, pos2}) {
       if (!board || !pos1 || !pos2)
         return false
+
+      if ((this.forwardDirection > 0 && pos2.row < pos1.row) || (this.forwardDirection < 0 && pos2.row > pos1.row)) {
+        return false
+      }
       // check verticle move
       let vDist = Math.abs(pos2.row - pos1.row)
-      let hDist = Math.abs(pos2.column.charCodeAt(0) - pos1.column.charCodeAt(0))
+      let hDist = this.columnDist(pos1.column, pos2.column)
       if (hDist === 0) {
         if (vDist === 2 && this.movedStatus() || vDist > 2) {
           return false

@@ -22,7 +22,7 @@ const State = stampit({
         return false
 
       let vDist = Math.abs(pos2.row - pos1.row)
-      let hDist = Math.abs(pos2.column.charCodeAt(0) - pos1.column.charCodeAt(0))
+      let hDist = this.columnDist(pos1.column, pos2.column)
       if (vDist > 0 && hDist > 0) {
         return false
       }
