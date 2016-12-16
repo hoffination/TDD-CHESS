@@ -1,6 +1,6 @@
 {
-  "name": "stampit_test",
-  "version": "1.0.0",
+  "name": "TDD-CHESS",
+  "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -8,8 +8,8 @@
     "test": "jasmine",
     "lint": "jshint *.js **/*.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "hoffination",
+  "license": "MIT",
   "dependencies": {
     "stampit": "^3.0.6"
   },
