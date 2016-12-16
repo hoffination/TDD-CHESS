@@ -39,6 +39,14 @@ describe('Knight >', () => {
       expect(myKnight.canMove({board: positions, pos1: pos1, pos2: pos2})).toEqual(false)
     })
 
+    it('should not be able to move into its own space', () => {
+      let myKnight = Knight();
+      let positions = {'A': {1: {piece: myKnight, row: 1, column: 'A'}}}
+      let start = {row: 1, column: 'A'}
+
+      expect(myKnight.canMove({board: positions, pos1: start, pos2: start})).toEqual(false)
+    })
+
     it('should not be able to capture friendly pieces', () => {
       let myKnight = Knight();
       let otherKnight = Knight();

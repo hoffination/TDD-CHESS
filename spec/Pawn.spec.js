@@ -158,5 +158,13 @@ describe('Pawn >', () => {
       let canItMove = myPawn.canMove({board: positions, pos1: pos1, pos2: pos2});
       expect(canItMove).toEqual(false)
     })
+
+    it('should not be able to move into its own space', () => {
+      let myPawn = Pawn();
+      let positions = {'A': {1: {piece: myPawn, row: 1, column: 'A'}}}
+      let start = {row: 1, column: 'A'}
+
+      expect(myPawn.canMove({board: positions, pos1: start, pos2: start})).toEqual(false)
+    })
   })
 })

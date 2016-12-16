@@ -8,7 +8,7 @@ const State = stampit({
   methods: {
     canMove({board, pos1, pos2}) {},
     columnDist(col1, col2) {
-      return Math.abs(col1.charCodeAt(0) - col2.charCodeAt(0))
+      return (col1.charCodeAt(0) - col2.charCodeAt(0))
     }
   },
   properties: {}
