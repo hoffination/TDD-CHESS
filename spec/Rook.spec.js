@@ -1,4 +1,3 @@
-/* jshint esversion: 6, asi: true */
 let Rook = require('../Rook')
 
 describe('Rook >', () => {

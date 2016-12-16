@@ -1,4 +1,3 @@
-/* jshint esversion: 6, asi: true */
 let Knight = require('../Knight')
 
 describe('Knight >', () => {

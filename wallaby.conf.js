@@ -6,7 +6,7 @@ module.exports = function () {
     ],
 
     tests: [
-      'tests/*.js'
+      'spec/*.js'
     ],
 
     testFramework: 'jasmine',

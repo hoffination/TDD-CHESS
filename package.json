@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jasmine"
+    "pretest": "npm run lint",
+    "test": "jasmine",
+    "lint": "jshint *.js **/*.js"
   },
   "author": "",
   "license": "ISC",
@@ -12,6 +14,7 @@
     "stampit": "^3.0.6"
   },
   "devDependencies": {
-    "jasmine": "^2.5.2"
+    "jasmine": "^2.5.2",
+    "jshint": "^2.9.4"
   }
 }

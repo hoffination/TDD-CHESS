@@ -1,4 +1,3 @@
-/* jshint esversion: 6, asi: true */
 const stampit = require('stampit')
 const TURN = require('./Turn')
 const fs = require('fs')
