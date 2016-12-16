@@ -9,7 +9,7 @@ describe('Board >', () => {
 
       let myBoard = board()
 
-      expect(myBoard.positions['A'][1].piece).toEqual('ROOK')
+      expect(myBoard.positions.A[1].piece).toEqual('ROOK')
       expect(myBoard.getTurn()).toEqual(0)
     })
 
