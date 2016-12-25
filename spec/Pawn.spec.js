@@ -79,7 +79,8 @@ describe('Pawn >', () => {
       let pos1 = {column: 'A', row: 3}
       let pos2 = {column: 'A', row: 5}
 
-      myPawn.move()
+      myPawn.move({pos1: pos1, pos2: pos2})
+      myPawn.turnUpdate()
       let canItMove = myPawn.canMove({board: positions, pos1: pos1, pos2: pos2});
       expect(canItMove).toEqual(false)
     })
@@ -156,6 +157,53 @@ describe('Pawn >', () => {
       let pos2 = {column: 'D', row: 4}
 
       let canItMove = myPawn.canMove({board: positions, pos1: pos1, pos2: pos2});
+      expect(canItMove).toEqual(false)
+    })
+
+    it('should be able to take another pawn en Passant on the turn after a pawn moves two spaces forwards', () => {
+      let myPawn = Pawn()
+      let otherPawn = Pawn({owner: 'BLACK'})
+      let positions = {
+        'A': {2: {piece: otherPawn, row: 2, column: 'A'}, 3: {row: 3, column: 'A'}, 4: {row: 4, column: 'A'}},
+        'B': {4: {piece: myPawn, row: 4, column: 'B'}}
+      }
+      let pos1 = {column: 'A', row: 2}
+      let pos2 = {column: 'A', row: 4}
+
+      myPawn.move({pos1: pos1, pos2: pos2})
+      myPawn.turnUpdate()
+      expect(myPawn.canBeTakenEnPassant()).toEqual(true)
+      delete positions.A[2].piece
+      positions.A[4].piece = myPawn
+
+      pos1 = {column: 'B', row: 4}
+      pos2 = {column: 'A', row: 3}
+      let canItMove = otherPawn.canMove({board: positions, pos1: pos1, pos2: pos2})
+      expect(canItMove).toEqual(true)
+    })
+
+    it('should not be able to take another pawn en Passant more than one turn after a pawn moves two spaces forwards', () => {
+      let myPawn = Pawn()
+      let otherPawn = Pawn({owner: 'BLACK'})
+      let positions = {
+        'A': {2: {piece: otherPawn, row: 2, column: 'A'}, 3: {row: 3, column: 'A'}, 4: {row: 4, column: 'A'}},
+        'B': {4: {piece: myPawn, row: 4, column: 'B'}}
+      }
+      let pos1 = {column: 'A', row: 2}
+      let pos2 = {column: 'A', row: 4}
+
+      myPawn.move({pos1: pos1, pos2: pos2})
+      myPawn.turnUpdate()
+      expect(myPawn.canBeTakenEnPassant()).toEqual(true)
+      delete positions.A[2].piece
+      positions.A[4].piece = myPawn
+
+      myPawn.turnUpdate()
+      myPawn.turnUpdate()
+
+      pos1 = {column: 'B', row: 4}
+      pos2 = {column: 'A', row: 3}
+      let canItMove = otherPawn.canMove({board: positions, pos1: pos1, pos2: pos2})
       expect(canItMove).toEqual(false)
     })
 
