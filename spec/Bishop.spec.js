@@ -1,4 +1,5 @@
 let Bishop = require('../Bishop')
+const helpers = require('./helpers')
 
 describe('Bishop >', () => {
   describe('Initialization >', () => {
@@ -13,19 +14,8 @@ describe('Bishop >', () => {
 
   describe('Movement >', () => {
     it('should be able to move diagonally into an empty space', () => {
-      let myBishop = Bishop();
-      let positions = {
-        'A': {1: {piece: myBishop, row: 1, column: 'A'}},
-        'B': {2: {row: 2, column: 'B'}},
-        'C': {3: {row: 3, column: 'C'}},
-        'D': {4: {row: 4, column: 'D'}}
-      }
-      let bishopStart = {row: 1, column: 'A'}
-      let near = {row: 2, column: 'B'}
-      let far = {row: 4, column: 'D'}
-
-      expect(myBishop.canMove({board: positions, pos1: bishopStart, pos2: near})).toEqual(true)
-      expect(myBishop.canMove({board: positions, pos1: bishopStart, pos2: far})).toEqual(true)
+      helpers.singleSpaceMovementDiagonally(Bishop(), true)
+      helpers.manySpaceMovementDiagonally(Bishop(), true)
     })
 
     it('should not be able to move into its own space', () => {
@@ -78,17 +68,10 @@ describe('Bishop >', () => {
     })
 
     it('should not be able to move horizontally or vertically', () => {
-      let myBishop = Bishop();
-      let positions = {
-        'A': {1: {piece: myBishop, row: 1, column: 'A'}, 2: {row: 2, column: 'A'}},
-        'B': {1: {row: 1, column: 'B'}}
-      }
-      let bishopStart = {row: 1, column: 'A'}
-      let horizontalEnd = {row: 1, column: 'B'}
-      let verticalEnd = {row: 2, column: 'A'}
-
-      expect(myBishop.canMove({board: positions, pos1: bishopStart, pos2: horizontalEnd})).toEqual(false)
-      expect(myBishop.canMove({board: positions, pos1: bishopStart, pos2: verticalEnd})).toEqual(false)
+      helpers.singleSpaceMovementVertical(Bishop(), false)
+      helpers.manySpaceMovementHorizontal(Bishop(), false)
+      helpers.singleSpaceMovementHorizontal(Bishop(), false)
+      helpers.manySpaceMovementVertical(Bishop(), false)
     })
   })
 })

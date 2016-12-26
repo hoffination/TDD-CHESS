@@ -1,4 +1,5 @@
 let Rook = require('../Rook')
+const helpers = require('./helpers')
 
 describe('Rook >', () => {
   describe('Initialization >', () => {
@@ -18,30 +19,14 @@ describe('Rook >', () => {
       expect(canItMove).toEqual(false)
     })
 
-    it('should be able to move into an empty space vertically', () => {
-      let myRook = Rook();
-      let positions = {'A': {1: {piece: myRook, row: 1, column: 'A'}, 2: {row: 2, column: 'A'}, 3: {row: 3, column: 'A'}}}
-      let pos1 = {column: 'A', row: 1}
-      let pos2 = {column: 'A', row: 3}
-
-      expect(myRook.canMove({board: positions, pos1: pos1, pos2: pos2})).toEqual(true)
-
-      delete positions.A[1].piece
-      positions.A[3] = myRook
-      expect(myRook.canMove({board: positions, pos1: pos2, pos2: pos1})).toEqual(true)
+    it('should be able to move into an empty space horizontally', () => {
+      helpers.singleSpaceMovementHorizontal(Rook(), true)
+      helpers.manySpaceMovementHorizontal(Rook(), true)
     })
 
-    it('should be able to move into an empty space horizontally', () => {
-      let myRook = Rook();
-      let positions = {'A': {1: {piece: myRook, row: 1, column: 'A'}}, 'B': {1: {row: 1, column: 'B'}}, 'C': {1: {row: 1, column: 'C'}}}
-      let pos1 = {column: 'A', row: 1}
-      let pos2 = {column: 'C', row: 1}
-
-      expect(myRook.canMove({board: positions, pos1: pos1, pos2: pos2})).toEqual(true)
-
-      delete positions.A[1].piece
-      positions.C[1] = myRook
-      expect(myRook.canMove({board: positions, pos1: pos2, pos2: pos1})).toEqual(true)
+    it('should be able to move into an empty space vertically', () => {
+      helpers.singleSpaceMovementVertical(Rook(), true)
+      helpers.manySpaceMovementVertical(Rook(), true)
     })
 
     it('should not be able to move into an empty space diagonally', () => {
