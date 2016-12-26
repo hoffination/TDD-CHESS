@@ -1,5 +1,5 @@
 let Rook = require('../Rook')
-const helpers = require('./helpers')
+const helpers = require('../test/helpers');
 
 describe('Rook >', () => {
   describe('Initialization >', () => {

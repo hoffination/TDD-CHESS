@@ -1,5 +1,5 @@
 let Queen = require('../Queen')
-const helpers = require('./helpers');
+const helpers = require('../test/helpers');
 
 describe('Queen >', () => {
   describe('Initialization >', () => {

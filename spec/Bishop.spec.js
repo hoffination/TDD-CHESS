@@ -1,5 +1,5 @@
 let Bishop = require('../Bishop')
-const helpers = require('./helpers')
+const helpers = require('../test/helpers');
 
 describe('Bishop >', () => {
   describe('Initialization >', () => {
