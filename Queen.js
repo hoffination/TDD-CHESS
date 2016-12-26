@@ -29,8 +29,7 @@ const State = stampit({
 
         return true
       }
-
-      console.log(destination)
+      
       return false;
     }
   },
