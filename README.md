@@ -1,5 +1,6 @@
 # TDD-CHESS
 ![Build Status](https://api.travis-ci.org/hoffination/TDD-CHESS.svg?branch=master)
+[![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges)
 
 Chess written for NodeJS with a TDD workflow using WallabyJS
 
