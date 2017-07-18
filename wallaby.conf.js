@@ -1,13 +1,14 @@
 module.exports = function () {
   return {
     files: [
-      '*.js',
-      'test/*.js',
+      'src/**/*.ts',
+      'test/*.ts',
+      'layouts/*.json',
       { pattern: '*.conf.js', instrument: true, load: true, ignore: true }
     ],
 
     tests: [
-      'spec/*.js'
+      'spec/**/*.ts'
     ],
 
     testFramework: 'jasmine',

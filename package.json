@@ -5,16 +5,23 @@
   "main": "index.js",
   "scripts": {
     "pretest": "npm run lint",
-    "test": "jasmine",
-    "lint": "jshint *.js **/*.js"
+    "test": "jasmine"
   },
   "author": "hoffination",
   "license": "MIT",
-  "dependencies": {
-    "stampit": "^3.0.6"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "awesome-typescript-loader": "^3.2.1",
+    "clean-webpack-plugin": "^0.1.16",
     "jasmine": "^2.5.2",
-    "jshint": "^2.9.4"
+    "karma-chrome-launcher": "^2.2.0",
+    "karma-jasmine": "^1.1.0",
+    "karma-sourcemap-loader": "^0.3.7",
+    "karma-typescript": "^3.0.4",
+    "karma-webpack": "^2.0.4",
+    "tslint": "^5.5.0",
+    "tslint-loader": "^3.5.3",
+    "typescript": "^2.4.1",
+    "webpack": "^3.2.0"
   }
 }

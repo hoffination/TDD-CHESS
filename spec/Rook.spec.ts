@@ -1,50 +1,44 @@
-let Rook = require('../Rook')
-const helpers = require('../test/helpers');
+import Rook from '../src/piece/Rook'
+import { Player } from '../src/enums/Player'
+import { BoardSpace } from '../src/interface/BoardSpace'
+import Helpers from '../test/helpers'
 
 describe('Rook >', () => {
   describe('Initialization >', () => {
     it('should correctly initialize a rook', () => {
-      let myRook = Rook();
+      let myRook = new Rook(Player.WHITE);
 
       expect(myRook.movedStatus()).toEqual(false)
-      expect(myRook.name).toEqual('ROOK')
-      expect(myRook.renderChar).toEqual('R')
     })
   })
 
   describe('Movement >', () => {
-    it('should not be able to move if given bad directions', () => {
-      let rook = Rook();
-      let canItMove = rook.canMove({});
-      expect(canItMove).toEqual(false)
-    })
-
     it('should be able to move into an empty space horizontally', () => {
-      helpers.singleSpaceMovementHorizontal(Rook(), true)
-      helpers.manySpaceMovementHorizontal(Rook(), true)
+      Helpers.singleSpaceMovementHorizontal(new Rook(Player.WHITE), true)
+      Helpers.manySpaceMovementHorizontal(new Rook(Player.WHITE), true)
     })
 
     it('should be able to move into an empty space vertically', () => {
-      helpers.singleSpaceMovementVertical(Rook(), true)
-      helpers.manySpaceMovementVertical(Rook(), true)
+      Helpers.singleSpaceMovementVertical(new Rook(Player.WHITE), true)
+      Helpers.manySpaceMovementVertical(new Rook(Player.WHITE), true)
     })
 
     it('should not be able to move into an empty space diagonally', () => {
-      let myRook = Rook();
+      let myRook = new Rook(Player.WHITE);
       let positions = {'A': {1: {piece: myRook, row: 1, column: 'A'}}, 'C': {3: {row: 3, column: 'C'}}}
       let pos1 = {column: 'A', row: 1}
       let pos2 = {column: 'C', row: 3}
 
-      expect(myRook.canMove({board: positions, pos1: pos1, pos2: pos2})).toEqual(false) // Expected true to equal false
+      expect(myRook.canMove(positions, pos1, pos2)).toEqual(false) // Expected true to equal false
     })
 
     it('should be able to capture other pieces at any distance vertically or horizontally', () => {
-      let myRook1 = Rook();
-      let myRook2 = Rook();
-      let otherRookV1 = Rook({owner: 'BLACK'})
-      let otherRookV2 = Rook({owner: 'BLACK'})
-      let otherRookH1 = Rook({owner: 'BLACK'})
-      let otherRookH2 = Rook({owner: 'BLACK'})
+      let myRook1 = new Rook(Player.WHITE);
+      let myRook2 = new Rook(Player.WHITE);
+      let otherRookV1 = new Rook(Player.BLACK)
+      let otherRookV2 = new Rook(Player.BLACK)
+      let otherRookH1 = new Rook(Player.BLACK)
+      let otherRookH2 = new Rook(Player.BLACK)
       let positions = {
         'A': {
           1: {piece: myRook1, row: 1, column: 'A'},
@@ -70,15 +64,15 @@ describe('Rook >', () => {
         }
       }
 
-      expect(myRook1.canMove({board: positions, pos1: {row: 1, column: 'A'}, pos2: {row: 2, column: 'A'}})).toEqual(true)
-      expect(myRook1.canMove({board: positions, pos1: {row: 1, column: 'A'}, pos2: {row: 1, column: 'B'}})).toEqual(true)
-      expect(myRook1.canMove({board: positions, pos1: {row: 2, column: 'B'}, pos2: {row: 8, column: 'B'}})).toEqual(true)
-      expect(myRook1.canMove({board: positions, pos1: {row: 2, column: 'B'}, pos2: {row: 2, column: 'H'}})).toEqual(true)
+      expect(myRook1.canMove(positions, {row: 1, column: 'A'}, {row: 2, column: 'A'})).toEqual(true)
+      expect(myRook1.canMove(positions, {row: 1, column: 'A'}, {row: 1, column: 'B'})).toEqual(true)
+      expect(myRook1.canMove(positions, {row: 2, column: 'B'}, {row: 8, column: 'B'})).toEqual(true)
+      expect(myRook1.canMove(positions, {row: 2, column: 'B'}, {row: 2, column: 'H'})).toEqual(true)
     })
 
     it('should be unable to capture friendly pieces', () => {
-      let myRook = Rook()
-      let otherRook = Rook()
+      let myRook = new Rook(Player.WHITE)
+      let otherRook = new Rook(Player.WHITE)
       let positions = {'A': {
         1: {piece: myRook, row: 1, column: 'A'},
         2: {row: 2, column: 'A'},
@@ -87,13 +81,13 @@ describe('Rook >', () => {
       let pos1 = {column: 'A', row: 1}
       let pos2 = {column: 'A', row: 3}
 
-      expect(myRook.canMove({board: positions, pos1: pos1, pos2: pos2})).toEqual(false)
+      expect(myRook.canMove(positions, pos1, pos2)).toEqual(false)
     })
 
     it('should not be able to jump over pieces', () => {
-      let myRook = Rook()
-      let otherRook = Rook()
-      let otherRook2 = Rook()
+      let myRook = new Rook(Player.WHITE)
+      let otherRook = new Rook(Player.WHITE)
+      let otherRook2 = new Rook(Player.WHITE)
       let positions = {
         'A': {
           1: {piece: myRook, row: 1, column: 'A'},
@@ -108,18 +102,20 @@ describe('Rook >', () => {
       let pos2 = {column: 'A', row: 4}
       let pos3 = {column: 'C', row: 1}
 
-      expect(myRook.canMove({board: positions, pos1: pos1, pos2: pos2})).toEqual(false)
-      expect(myRook.canMove({board: positions, pos1: pos1, pos2: pos3})).toEqual(false)
+      expect(myRook.canMove(positions, pos1, pos2)).toEqual(false)
+      expect(myRook.canMove(positions, pos1, pos3)).toEqual(false)
     })
 
     it('should change its hasMoved status to true when it moves', () => {
-      let myRook = Rook()
+      let myRook = new Rook(Player.WHITE)
+      let pos1 = {column: 'A', row: 1}
+      let pos2 = {column: 'A', row: 4}
       expect(myRook.movedStatus()).toEqual(false)
-      myRook.move()
+      myRook.move(pos1, pos2)
       expect(myRook.movedStatus()).toEqual(true)
 
       // Check that it is instance specific
-      let otherRook = Rook()
+      let otherRook = new Rook(Player.WHITE)
       expect(otherRook.movedStatus()).toEqual(false)
       expect(myRook.movedStatus()).toEqual(true)
     })
