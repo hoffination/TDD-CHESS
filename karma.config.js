@@ -16,13 +16,14 @@ module.exports = function (config) {
         colors: true,
         logLevel: config.LOG_INFO,
         autoWatch: true,
-        browsers: ['Chrome'],
+        browsers: ['PhantomJS'],
         singleRun: false,
         concurrency: Infinity,
         plugins: [
             'karma-webpack',
             'karma-jasmine',
             'karma-chrome-launcher',
+            'karma-phantomjs-launcher',
             'karma-sourcemap-loader'
         ],
         mime : {

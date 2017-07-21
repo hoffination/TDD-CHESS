@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/entry.ts",
   "scripts": {
-    "test": "karma start karma.config.js --browsers Chrome --single-run=true"
+    "test": "karma start karma.config.js --browsers PhantomJS --single-run=true"
   },
   "author": "hoffination",
   "license": "MIT",
@@ -17,6 +17,7 @@
     "karma": "^1.7.0",
     "karma-chrome-launcher": "^2.2.0",
     "karma-jasmine": "^1.1.0",
+    "karma-phantomjs-launcher": "^1.0.4",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-typescript": "^3.0.4",
     "karma-webpack": "^2.0.4",
