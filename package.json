@@ -13,6 +13,7 @@
     "awesome-typescript-loader": "^3.2.1",
     "clean-webpack-plugin": "^0.1.16",
     "jasmine": "^2.5.2",
+    "karma": "^1.7.0",
     "karma-chrome-launcher": "^2.2.0",
     "karma-jasmine": "^1.1.0",
     "karma-sourcemap-loader": "^0.3.7",
