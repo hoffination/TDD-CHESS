@@ -8,7 +8,7 @@ module.exports = function (config) {
         ],
         preprocessors: {
             'spec/**/*.spec.ts': ['webpack', 'sourcemap'],
-            'test/*.js': ['webpack', 'sourcemap']
+            'test/*.ts': ['webpack', 'sourcemap']
         },
         webpack: require('./webpack.config.js'),
         reporters: ['progress'],
@@ -16,7 +16,7 @@ module.exports = function (config) {
         colors: true,
         logLevel: config.LOG_INFO,
         autoWatch: true,
-        browsers: ['ChromeHeadless'],
+        browsers: ['Chrome'],
         singleRun: false,
         concurrency: Infinity,
         plugins: [
