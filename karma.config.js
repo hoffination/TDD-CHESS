@@ -3,10 +3,12 @@ module.exports = function (config) {
         basePath: '',
         frameworks: ['jasmine'],
         files: [
-            'spec/**/*.spec.ts'
+            'spec/**/*.spec.ts',
+            'layouts/*.json'
         ],
         preprocessors: {
             'spec/**/*.spec.ts': ['webpack', 'sourcemap'],
+            'test/*.js': ['webpack', 'sourcemap']
         },
         webpack: require('./webpack.config.js'),
         reporters: ['progress'],
@@ -14,7 +16,7 @@ module.exports = function (config) {
         colors: true,
         logLevel: config.LOG_INFO,
         autoWatch: true,
-        browsers: ['Chrome'],
+        browsers: ['ChromeHeadless'],
         singleRun: false,
         concurrency: Infinity,
         plugins: [

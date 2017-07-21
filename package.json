@@ -2,10 +2,9 @@
   "name": "TDD-CHESS",
   "version": "0.1.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/entry.ts",
   "scripts": {
-    "pretest": "npm run lint",
-    "test": "jasmine"
+    "test": "karma start karma.config.js --browsers ChromeHeadless --single-run=true"
   },
   "author": "hoffination",
   "license": "MIT",

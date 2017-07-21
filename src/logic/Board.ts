@@ -1,7 +1,3 @@
-// const stampit = require('stampit')
-// const Turn = require('./Turn')
-// const fs = require('fs')
-
 import { Player } from '../enums/Player'
 import { BoardSpace } from '../interface/BoardSpace';
 import { Position } from '../interface/Position'
@@ -77,10 +73,3 @@ export default class Board {
     }
 
 }
-
-// const Board = stampit(BoardPrivate, BoardDefaults, BoardPublic);
-
-// let myboard = new Board();
-// myboard.renderBoard();
-
-// module.exports = Board
