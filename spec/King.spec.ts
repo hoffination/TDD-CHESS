@@ -1,7 +1,7 @@
 import King from '../src/piece/King'
 import Rook from '../src/piece/Rook'
 import { Player } from '../src/enums/Player'
-import Helpers from '../test/Helpers'
+import Helpers from '../test/helpers'
 
 describe('King >', () => {
   describe('Initialization >', () => {

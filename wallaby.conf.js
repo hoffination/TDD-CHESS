@@ -3,7 +3,7 @@ module.exports = function () {
     files: [
       'src/**/*.ts',
       'test/*.ts',
-      'layouts/*.json',
+      'src/**/*.json',
       { pattern: '*.conf.js', instrument: true, load: true, ignore: true }
     ],
 

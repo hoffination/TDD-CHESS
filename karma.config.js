@@ -4,7 +4,7 @@ module.exports = function (config) {
         frameworks: ['jasmine'],
         files: [
             'spec/**/*.spec.ts',
-            'layouts/*.json'
+            'src/**/*.json'
         ],
         preprocessors: {
             'spec/**/*.spec.ts': ['webpack', 'sourcemap'],

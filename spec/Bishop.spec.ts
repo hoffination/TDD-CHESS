@@ -1,6 +1,6 @@
 import Bishop from '../src/piece/Bishop'
 import { Player } from '../src/enums/Player'
-import Helpers from '../test/Helpers'
+import Helpers from '../test/helpers'
 
 describe('Bishop >', () => {
   describe('Initialization >', () => {

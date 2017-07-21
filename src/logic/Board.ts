@@ -1,8 +1,8 @@
 import { Player } from '../enums/Player'
 import { BoardSpace } from '../interface/BoardSpace';
 import { Position } from '../interface/Position'
-import * as json from '../../layouts/start.json'
-import Turn from './Turn'
+import * as json from '../layouts/start.json';
+import Turn from './Turn';
 
 import Pawn from '../piece/Pawn'
 import Rook from '../piece/Rook'

@@ -1,7 +1,7 @@
 import Queen from '../src/piece/Queen'
 import { Player } from '../src/enums/Player'
 import { BoardSpace } from '../src/interface/BoardSpace'
-import Helpers from '../test/Helpers'
+import Helpers from '../test/helpers'
 
 describe('Queen >', () => {
   describe('Initialization >', () => {
